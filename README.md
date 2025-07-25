@@ -74,3 +74,4 @@ http://localhost:8081/Patient/update/1
 http://localhost:8081/Patient/delete/1
 ----------------------------------------------
 thymeleaf: http://localhost:8081/users
+default page: http://localhost:8081/
