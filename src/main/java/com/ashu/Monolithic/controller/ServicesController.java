@@ -1,6 +1,7 @@
 package com.ashu.Monolithic.controller;
 
 import com.ashu.Monolithic.Model.Services;
+import com.ashu.Monolithic.service.KafkaProducer;
 import com.ashu.Monolithic.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,5 +23,12 @@ public class ServicesController {
         return new  ResponseEntity<>(allService,HttpStatus.OK);
     }
 
+    @Autowired
+    private KafkaProducer kafkaProducer;
 
+    @PostMapping("kafka/publish")
+    public String sendMessage(@RequestBody String message) {
+        kafkaProducer.sendMessage(message);
+        return "KafkaProducer send message--> " + message;
+    }
 }
