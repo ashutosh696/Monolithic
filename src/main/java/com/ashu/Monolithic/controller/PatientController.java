@@ -5,9 +5,7 @@ import com.ashu.Monolithic.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,10 +24,31 @@ public class PatientController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Patient>> getAll()
+    public  List<Patient> getAll()
     {
-        List<Patient> all = patientService.getAll();
-        return  new ResponseEntity<>(all,HttpStatus.OK);
+
+        return  patientService.getAll();
+    }
+    @GetMapping("/getbyid/{id}")
+    public Patient getPatientById(@PathVariable Long id) {
+        return patientService.getPatientById(id);
+    }
+    @PostMapping("/add")
+    public  Patient add(@RequestBody Patient patient )
+    {
+    return  patientService.add(patient);
+    }
+    
+    @PutMapping("/update/{id}")
+    public Patient update(@RequestBody Patient patient, @PathVariable Long id)
+    {
+        
+        return patientService.update(patient,id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deletePatient(@PathVariable Long id) {
+        return  patientService.deletePatient(id);
     }
 }
 

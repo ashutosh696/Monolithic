@@ -17,11 +17,11 @@ public class ServicesController {
     @Autowired
     PatientService patientService;
 
-    @GetMapping("/getAll")
+   /* @GetMapping("/getAll")
     public ResponseEntity<List<Services>> getAllServices() {
         List<Services> allService = patientService.getAllService();
         return new  ResponseEntity<>(allService,HttpStatus.OK);
-    }
+    }*/
 
     @Autowired
     private KafkaProducer kafkaProducer;
