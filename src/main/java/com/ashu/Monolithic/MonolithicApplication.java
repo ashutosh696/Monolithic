@@ -17,15 +17,24 @@ public class MonolithicApplication {
 		Teacher beanteacher = applicationContext.getBean(Teacher.class);
 		System.out.println("Teacher Bean"+beanteacher);
 
-		Student bean = applicationContext.getBean(Student.class);
+		Student bean = applicationContext.getBean("ashu",Student.class);
 		System.out.println("Student bean "+bean.getName());
 	}
 
-	@Bean
+	@Bean("ashu")
+	@Primary // if same type of two beans eg.Student exist,  use @Primary to inject this bean
 	public Student getBean()
 	{
 
 		return  new Student(1,"Ashu");
+
+	}
+
+	@Bean("neha")// define name of bean for using @Qualifier to inject this bean if same type of two beans eg.Student exist
+	public Student getBeans()
+	{
+
+		return  new Student(2,"Neha");
 
 	}
 
