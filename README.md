@@ -31,3 +31,46 @@ RUN below command in CMD:
 D:\kafka_2.13-4.0.0
 Start Kafka Broker:
 bin\windows\kafka-server-start.bat config\kraft\server.properties
+
+---------------------------------------------------------------------
+
+H2 Console: http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem:testdb)
+
+http://localhost:8081/Patient/add
+
+{
+"name": "Ashu",
+"address": "Delhi",
+"servicesList": [
+{
+"name": "X-ray",
+"fees": 500
+},
+{
+"name": "Scan",
+"fees": 700
+}
+]
+}
+
+{
+"name": "Neha",
+"address": "New Delhi",
+"servicesList": [
+{
+"name": "Injection",
+"fees": 500
+},
+{
+"name": "Test",
+"fees": 700
+}
+]
+}
+
+http://localhost:8081/Patient/getAll
+http://localhost:8081/Patient/getbyid/1
+http://localhost:8081/Patient/update/1
+http://localhost:8081/Patient/delete/1
+----------------------------------------------
+thymeleaf: http://localhost:8081/users
